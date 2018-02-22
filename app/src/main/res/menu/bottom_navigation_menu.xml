@@ -8,13 +8,13 @@
 
     </item>
 
-
     <item
-        android:id="@+id/ic_android"
-        android:icon="@drawable/ic_android"
+        android:id="@+id/ic_search"
+        android:icon="@drawable/ic_search"
         android:title="">
 
     </item>
+
 
     <item
         android:id="@+id/ic_circle"
@@ -31,8 +31,8 @@
     </item>
 
     <item
-        android:id="@+id/ic_search"
-        android:icon="@drawable/ic_search"
+        android:id="@+id/ic_android"
+        android:icon="@drawable/ic_android"
         android:title="">
 
     </item>
