@@ -7,12 +7,12 @@ import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.natasyajuliette.recipestory.HomeActivity;
-import com.example.natasyajuliette.recipestory.LikeActivity;
-import com.example.natasyajuliette.recipestory.ProfileActivity;
+import com.example.natasyajuliette.recipestory.Home.HomeActivity;
+import com.example.natasyajuliette.recipestory.Likes.LikeActivity;
+import com.example.natasyajuliette.recipestory.Profile.ProfileActivity;
 import com.example.natasyajuliette.recipestory.R;
-import com.example.natasyajuliette.recipestory.SearchActivity;
-import com.example.natasyajuliette.recipestory.ShareActivity;
+import com.example.natasyajuliette.recipestory.Search.SearchActivity;
+import com.example.natasyajuliette.recipestory.Share.ShareActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 /**

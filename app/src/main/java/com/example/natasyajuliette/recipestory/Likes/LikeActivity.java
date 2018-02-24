@@ -1,4 +1,4 @@
-package com.example.natasyajuliette.recipestory;
+package com.example.natasyajuliette.recipestory.Likes;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.natasyajuliette.recipestory.R;
 import com.example.natasyajuliette.recipestory.Utils.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -15,11 +16,11 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
  * Created by natasyajuliette on 22/02/18.
  */
 
-public class ShareActivity extends AppCompatActivity {
+public class LikeActivity extends AppCompatActivity {
 
-    private static final String TAG = "ShareActivity";
-    private Context aContext = ShareActivity.this;
-    private static final int ACTIVITY_NUM = 2;
+    private static final String TAG = "LikeActivity";
+    private Context aContext = LikeActivity.this;
+    private static final int ACTIVITY_NUM = 3;
 
 
     @Override
@@ -43,4 +44,5 @@ public class ShareActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+
 }

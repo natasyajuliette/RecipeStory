@@ -1,4 +1,4 @@
-package com.example.natasyajuliette.recipestory;
+package com.example.natasyajuliette.recipestory.Profile;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.natasyajuliette.recipestory.R;
 import com.example.natasyajuliette.recipestory.Utils.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -15,11 +16,11 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
  * Created by natasyajuliette on 22/02/18.
  */
 
-public class SearchActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
-    private static final String TAG = "SearchActivity";
-    private Context aContext = SearchActivity.this;
-    private static final int ACTIVITY_NUM = 1;
+    private static final String TAG = "ProfileActivity";
+    private Context aContext = ProfileActivity.this;
+    private static final int ACTIVITY_NUM = 4;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
