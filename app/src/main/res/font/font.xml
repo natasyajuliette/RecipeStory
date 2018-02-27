@@ -5,5 +5,10 @@
         android:fontWeight="400"
         android:font="@font/montserrat_regular"
         />
+    <font
+        android:fontStyle="normal"
+        android:fontWeight="50"
+        android:font="@font/montserrat_light"
+        />
 
 </font-family>
