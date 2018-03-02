@@ -1,4 +1,4 @@
-package com.example.natasyajuliette.recipestory.Home;
+package com.example.natasyajuliette.recipestory.Utils;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,9 +16,10 @@ import java.util.List;
  */
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
     private static final String TAG = "SectionsPagerAdapter";
 
-    private final List<Fragment> mFragmentList = new ArrayList<Fragment>();
+    private final List<Fragment> mFragmentList = new ArrayList<>();
 
     public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);

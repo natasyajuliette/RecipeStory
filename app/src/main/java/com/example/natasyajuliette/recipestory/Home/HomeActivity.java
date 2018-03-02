@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
 
 import com.example.natasyajuliette.recipestory.R;
 import com.example.natasyajuliette.recipestory.Utils.BottomNavigationViewHelper;
+import com.example.natasyajuliette.recipestory.Utils.SectionsPagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class HomeActivity extends AppCompatActivity {
@@ -39,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         adapter.addFragment(new CameraFragment());
         adapter.addFragment(new HomeFragment());
         adapter.addFragment(new MessagesFragment());
-        ViewPager viewPager = (ViewPager) findViewById(R.id.container);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);

@@ -14,25 +14,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/backarrow"
+                    android:src="@drawable/ic_backarrow"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:text="natasyajuliette"
+                    android:text="Options"
                     android:textSize="20sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/montserrat_regular"
                     android:layout_marginLeft="15dp"
-                    />
-                
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/profileMenu"
-                    android:src="@drawable/ic_ellipses"/>
+                    android:layout_toRightOf="@+id/backarrow"/>
 
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
