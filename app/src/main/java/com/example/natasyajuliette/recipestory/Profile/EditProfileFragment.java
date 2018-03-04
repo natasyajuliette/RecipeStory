@@ -20,6 +20,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class EditProfileFragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "EditProfileFragment";
+
     private ImageView mProfilePhoto;
 
     @Nullable
@@ -28,18 +29,21 @@ public class EditProfileFragment extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.fragment_editprofile, container, false);
         mProfilePhoto = (ImageView) view.findViewById(R.id.profile_photo);
 
+        initImageLoader();
+
         setProfileImage();
 
         return view;
     }
 
-    private void initImageLoader0() {
+    private void initImageLoader(){
         UniversalImageLoader universalImageLoader = new UniversalImageLoader(getActivity());
         ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
-    private void setProfileImage() {
-        Log.d(TAG, "setProfileImage: setting Profile Image");
+
+    private void setProfileImage(){
+        Log.d(TAG, "setProfileImage: setting profile image.");
         String imgURL = "0.academia-photos.com/20743420/18455954/18410995/s200_natasya.juliette.jpeg";
-        UniversalImageLoader.setImage(imgURL, mProfilePhoto, null,"https://");
+        UniversalImageLoader.setImage(imgURL, mProfilePhoto, null, "https://");
     }
 }

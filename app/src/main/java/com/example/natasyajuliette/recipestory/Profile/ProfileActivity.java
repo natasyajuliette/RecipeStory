@@ -36,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
         aProgressBar = (ProgressBar) findViewById(R.id.profileProgressBar);
         aProgressBar.setVisibility(View.GONE);
+
         setupBottomNavigationView();
         setupToolbar();
 
@@ -45,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.profileToolBar);
         setSupportActionBar(toolbar);
 
-        ImageView profileMenu = (ImageView) findViewById(R.id.profileMenu);
+        ImageView profileMenu = (ImageView) findViewById(R.id.profilemenu);
         profileMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
