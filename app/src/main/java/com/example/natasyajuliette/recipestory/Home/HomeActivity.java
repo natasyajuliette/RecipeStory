@@ -13,12 +13,14 @@ import android.view.MenuItem;
 import com.example.natasyajuliette.recipestory.R;
 import com.example.natasyajuliette.recipestory.Utils.BottomNavigationViewHelper;
 import com.example.natasyajuliette.recipestory.Utils.SectionsPagerAdapter;
+import com.example.natasyajuliette.recipestory.Utils.UniversalImageLoader;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomeActivity";
-    private Context aContext = HomeActivity.this;
+    private Context mContext = HomeActivity.this;
     private static final int ACTIVITY_NUM = 0;
 
     @Override
@@ -29,7 +31,13 @@ public class HomeActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: starting");
         setupBottomNavigationView();
 
+        initImageLoader();
         setupViewPager();
+    }
+
+    private void initImageLoader(){
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
 
     /**
@@ -60,7 +68,7 @@ public class HomeActivity extends AppCompatActivity {
         Log.d(TAG, "setupBottomNavigationView, setting up BottomNavigationView");
         BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(aContext, bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
