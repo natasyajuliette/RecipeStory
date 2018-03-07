@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "451592748308",
+    "firebase_url": "https://recipestory-c500a.firebaseio.com",
+    "project_id": "recipestory-c500a",
+    "storage_bucket": "recipestory-c500a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451592748308:android:abc3cd236c46869d",
+        "android_client_info": {
+          "package_name": "com.example.natasyajuliette.recipestory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451592748308-vdqhohj5p3masi5n2i7fsqarht57joo7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.natasyajuliette.recipestory",
+            "certificate_hash": "138b773926c211862caa01f7ffde14036741e3d2"
+          }
+        },
+        {
+          "client_id": "451592748308-5ta7is5hpr7q6dcat4ruid0r25fl81vl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKRpQyrYXDzEKJ_2GXIdEJzgH2C9laSdI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451592748308-5ta7is5hpr7q6dcat4ruid0r25fl81vl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
