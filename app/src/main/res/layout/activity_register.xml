@@ -87,7 +87,7 @@
     <ProgressBar
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/progressbar"
+        android:id="@+id/progressBar"
         android:layout_centerInParent="true"/>
 
     <TextView
@@ -97,9 +97,9 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:fontFamily="@font/montserrat_regular"
-        android:layout_alignBottom="@id/progressbar"
-        android:layout_alignRight="@id/progressbar"
-        android:layout_alignLeft="@id/progressbar"
+        android:layout_alignBottom="@id/progressBar"
+        android:layout_alignRight="@id/progressBar"
+        android:layout_alignLeft="@id/progressBar"
         android:gravity="center_horizontal"
         />
 
