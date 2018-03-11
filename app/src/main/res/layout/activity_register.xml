@@ -101,6 +101,7 @@
         android:layout_alignRight="@id/progressBar"
         android:layout_alignLeft="@id/progressBar"
         android:gravity="center_horizontal"
+        android:id="@+id/loadingPleaseWait"
         />
 
 </RelativeLayout>
