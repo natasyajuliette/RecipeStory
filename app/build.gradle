@@ -40,8 +40,11 @@ dependencies {
     //Universal Image Loader
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
-    //Firebase
-    compile 'com.google.firebase:firebase-core:10.2.6'
+    //Firebase authentication
+    compile 'com.google.firebase:firebase-auth:10.2.6'
+
+    //Firebase real-time database
+    compile 'com.google.firebase:firebase-database:10.2.6'
 
 }
 
