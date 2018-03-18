@@ -7,11 +7,15 @@ import android.widget.Toast;
 
 import com.example.natasyajuliette.recipestory.R;
 import com.example.natasyajuliette.recipestory.models.User;
+import com.example.natasyajuliette.recipestory.models.UserAccountSettings;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.content.ContentValues.TAG;
 
@@ -23,34 +27,39 @@ public class FirebaseMethods {
 
     private static final String TAG = "FirebaseMethods";
 
-    // Firebase
+    //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference myRef;
     private String userID;
 
     private Context mContext;
 
     public FirebaseMethods(Context context) {
-        mContext = context;
         mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = mFirebaseDatabase.getReference();
+        mContext = context;
 
-        if (mAuth.getCurrentUser() != null) {
+        if(mAuth.getCurrentUser() != null){
             userID = mAuth.getCurrentUser().getUid();
         }
     }
 
-    public boolean checkIfUsernameExists(String username, DataSnapshot dataSnapshot) {
-        Log.d(TAG, "checkIfUsernameExists: checking if the username " + username + "already exists");
+    public boolean checkIfUsernameExists(String username, DataSnapshot datasnapshot){
+        Log.d(TAG, "checkIfUsernameExists: checking if " + username + " already exists.");
 
         User user = new User();
 
-        for (DataSnapshot ds: dataSnapshot.getChildren()) {
-            Log.d(TAG, "checkIfUsernameExists: datasnapshot" + ds);
+        for (DataSnapshot ds: datasnapshot.child(userID).getChildren()){
+            Log.d(TAG, "checkIfUsernameExists: datasnapshot: " + ds);
 
             user.setUsername(ds.getValue(User.class).getUsername());
-            Log.d(TAG, "checkIfUsernameExists: username" + user.getUsername());
+            Log.d(TAG, "checkIfUsernameExists: username: " + user.getUsername());
 
-            if(StringManipulation.expandUsername(user.getUsername()).equals(username)) {
+            if(StringManipulation.expandUsername(user.getUsername()).equals(username)){
+                Log.d(TAG, "checkIfUsernameExists: FOUND A MATCH: " + user.getUsername());
                 return true;
             }
         }
@@ -77,12 +86,66 @@ public class FirebaseMethods {
                             Toast.makeText(mContext, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
 
-                        } else if (task.isSuccessful()) {
+                        }
+                        else if(task.isSuccessful()){
                             userID = mAuth.getCurrentUser().getUid();
+                            senfVerificationEmail();
                             Log.d(TAG, "onComplete: Authstate changed: " + userID);
                         }
 
                     }
                 });
     }
+
+    public void senfVerificationEmail() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user != null) {
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                            } else {
+                                Toast.makeText(mContext, "couldn't send verification email", Toast.LENGTH_SHORT).show();;
+                            }
+                        }
+                    });
+        }
+    }
+    /** Add information to users node
+     * Add information to user_account_settings node
+     *
+     * @param email
+     * @param username
+     * @param description
+     * @param website
+     * @param profile_photo
+     */
+    public void addNewUser(String email, String username, String description, String website, String profile_photo){
+
+        User user = new User( userID,  1,  email,  StringManipulation.condensedUsername(username) );
+
+        myRef.child(mContext.getString(R.string.dbname_users))
+                .child(userID)
+                .setValue(user);
+
+
+        UserAccountSettings settings = new UserAccountSettings(
+                description,
+                username,
+                0,
+                0,
+                0,
+                profile_photo,
+                username,
+                website
+        );
+
+        myRef.child(mContext.getString(R.string.dbname_user_account_settings))
+                .child(userID)
+                .setValue(settings);
+
+    }
+
 }
