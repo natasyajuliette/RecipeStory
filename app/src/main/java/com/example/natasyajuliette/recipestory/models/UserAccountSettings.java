@@ -36,10 +36,6 @@ public class UserAccountSettings {
         return description;
     }
 
-    public void setDscription(String description) {
-        this.description = description;
-    }
-
     public String getDisplay_name() {
         return display_name;
     }
