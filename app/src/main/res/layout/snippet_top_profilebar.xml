@@ -23,6 +23,7 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/montserrat_regular"
                     android:layout_marginLeft="15dp"
+                    android:id="@+id/username"
                     />
                 
                 <ImageView

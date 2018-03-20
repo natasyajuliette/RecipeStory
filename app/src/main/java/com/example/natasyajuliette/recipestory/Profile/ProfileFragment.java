@@ -21,6 +21,11 @@ import android.widget.TextView;
 import com.example.natasyajuliette.recipestory.Login.LoginActivity;
 import com.example.natasyajuliette.recipestory.R;
 import com.example.natasyajuliette.recipestory.Utils.BottomNavigationViewHelper;
+import com.example.natasyajuliette.recipestory.Utils.FirebaseMethods;
+import com.example.natasyajuliette.recipestory.Utils.UniversalImageLoader;
+import com.example.natasyajuliette.recipestory.models.User;
+import com.example.natasyajuliette.recipestory.models.UserAccountSettings;
+import com.example.natasyajuliette.recipestory.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +53,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference myRef;
+    private FirebaseMethods mFirebaseMethods;
 
     private TextView mPosts, mFollowing, mFollowers, mDisplayName, mUsername, mWebsite, mDescription;
     private ProgressBar mProgressBar;
@@ -78,12 +84,44 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
         profileMenu = (ImageView) view.findViewById(R.id.profileMenu);
         bottomNavigationViewEx = (BottomNavigationViewEx) view.findViewById(R.id.bottomNavViewBar);
         mContext = getActivity();
+        mFirebaseMethods = new FirebaseMethods(getActivity());
 
         setupBottomNavigationView();
         setupToolbar();
 
+        setupFirebaseAuth();
+        
+        TextView editProfile = (TextView) view.findViewById(R.id.textEditProfile);
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: navigating to " + mContext.getString(R.string.edit_profile_fragment));
+                Intent intent = new Intent(mContext, AccountSettingsActivity.class);
+                intent.putExtra(getString(R.string.calling_activity), getString(R.string.profile_activity));
+                startActivity(intent);
+
+            }
+        });
 
         return view;
+    }
+
+    private void setupProfileWidget(UserSettings userSettings) {
+        Log.d(TAG, "setupProfileWidget: setting widgets with data retriecing from firebase databse" + userSettings.toString());
+
+        User user = userSettings.getUser();
+        UserAccountSettings settings = userSettings.getSettings();
+
+        UniversalImageLoader .setImage(settings.getProfile_photo(), mProfilePhoto, null, "");
+
+        mDisplayName.setText(settings.getDisplay_name());
+        mUsername.setText(settings.getUsername());
+        mWebsite.setText(settings.getWebsite());
+        mDescription.setText(settings.getDescription());
+        mPosts.setText(String.valueOf(settings.getPost()));
+        mFollowers.setText(String.valueOf(settings.getFollowers()));
+        mFollowing.setText(String.valueOf(settings.getFollowing()));
+        mProgressBar.setVisibility(View.GONE);
     }
 
     private void setupToolbar(){
@@ -145,7 +183,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // retrieve user information from the database
-
+                setupProfileWidget(mFirebaseMethods.getUserSettings(dataSnapshot));
 
                 // retrieve images for the user
             }

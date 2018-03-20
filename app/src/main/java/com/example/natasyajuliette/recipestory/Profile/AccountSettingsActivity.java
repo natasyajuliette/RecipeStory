@@ -2,6 +2,7 @@ package com.example.natasyajuliette.recipestory.Profile;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -61,9 +62,18 @@ public class AccountSettingsActivity extends AppCompatActivity {
 
         setupFragments();
         setupSettingsList();
+        getIncomingIntent();
 
     }
 
+    private void getIncomingIntent() {
+        Intent intent = getIntent();
+
+        if (intent.hasExtra(getString(R.string.calling_activity))) {
+            Log.d(TAG, "getIncomingIntent: received Incoming intent");
+            setViewPager(pagerAdapter.getFragmentNumber(getString(R.string.edit_profile_fragment)));
+        }
+    }
     private void setupFragments() {
         pagerAdapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(new EditProfileFragment(), getString(R.string.edit_profile_fragment));
