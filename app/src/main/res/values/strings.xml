@@ -17,6 +17,11 @@
     <string name="field_description">description</string>
     <string name="field_phone_number">phone_number</string>
 
+    <string name="string_open_camera">Open Camera</string>
+
+    //Sharing Activity
+    <string name="gallery">GALLERY</string>
+    <string name="photo">PHOTO</string>
 
     // Intent Extras
     <string name="calling_activity">calling_activity</string>
@@ -27,6 +32,8 @@
     // Dialog names
     <string name="confirm_password_dialog">ConfirmPasswordDialog</string>
 
+    // Layout
+    <string name="string_next">Next</string>
 
 
 
